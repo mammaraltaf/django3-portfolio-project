@@ -1,0 +1,39 @@
+{% extends 'portfolio_code/base.html' %}
+{% load static %}
+{% block content %}
+<!-- <h2>Ammar's Portfolio</h2>
+<a href="{% url 'blog:all_blog' %}">Blog</a> -->
+
+
+
+<div class="row justify-content-center my-3">
+    <div class="col-5">
+        <img src="{% static 'portfolio_code/Ammar_Profile-bg.png' %}" class="img-fluid">
+    </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+    <div class="col-md-9 text-center">
+        <h1 id="hometext" class="font-weight-bold">Python | Django Developer | Machine Learning 😊</h1>
+    </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+    {% for project in proj %}
+    <div class="col-lg-4 col-md-6">
+        {% if project.url %}
+        <br><a href="{{project.url}}"><img src="{{ project.image.url }}" class="img-fluid mb-2"></a><br>
+
+
+        {% else %}
+
+        <img src="{{project.image.url}}" class="img-fluid mb-2">
+        {% endif %}
+        {{project.title}} <br>
+        {{project.description}}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
